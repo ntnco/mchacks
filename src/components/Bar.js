@@ -7,7 +7,8 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Button from "@material-ui/core/Button"
+import Button from "@material-ui/core/Button";
+import AppBar from "@material-ui/core/AppBar";
 
 
 
@@ -17,12 +18,24 @@ class Bubble extends React.Component {
 
     constructor(probs){
         super(probs);
-
-        console.log(probs);
         this.state = {...probs}
+        console.log(this.state.onClick);
+
+        this.handleClick = this.handleClick.bind(this);
+        this.handleClick2 = this.handleClick2.bind(this);
+
+
     }
 
+    handleClick(){
+        //console.log(this.state.value);
+        this.state.onClick(this.state.value)
+        this.state.value = "";
+    }
 
+    handleClick2(event){
+        this.setState({...this.state, value:event.target.value})
+    }
     
     render() {
 
@@ -50,17 +63,24 @@ class Bubble extends React.Component {
 
         
 
-    return <Toolbar >
+    return <AppBar style={{
+        top: 'auto',
+        bottom: 0
+      }}>
+    <Toolbar >
             
             <InputBase
                 className={classes.input}
                 placeholder="Ask me anything"
                 inputProps={{ 'aria-label': 'search google maps' }}
                 style={{width:"100%", color:"white"}}
+                value={this.state.value}
+                onChange={this.handleClick2}
             />
-            <Button onClick={this.state.sendMessage} label="send" style={{'background-color':"#ffd200"}}>Send</Button>
+            <Button label="send" onClick={this.handleClick} style={{'background-color':"#ffd200"}}>Send</Button>
       
         </Toolbar>
+        </AppBar>
         
     }
   }

@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import MessageFeed from './components/MessageFeed'
 
+
 import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles(theme => ({
@@ -61,7 +62,7 @@ const mess = [{text:"hi therehi therehi therehi therehi therehi therehi therehi 
 
 function App() {
   const classes = useStyles();
-
+  
   return (
     <React.Fragment>
       <CssBaseline />
@@ -73,12 +74,8 @@ function App() {
         </Toolbar>
       </AppBar>
 
-      <MessageFeed messages={mess}>
-      
-      </MessageFeed>
-      <AppBar position="sticky" className={classes.appBarBot}>
-        <Bar />
-      </AppBar>
+      <MessageFeed messages={mess} />
+        
     </React.Fragment>
   );
 }
