@@ -1,0 +1,7 @@
+NOVARTIS : Impact the most people around the world
+    Price : interview for internship with a mantor
+RBC : Give 2000$ to the one that is thinks the most in the futur
+GOOGLE : Best usage of firebase or google cloud (3 e)
+IBM : Best usage of their API
+IVEY : Build a buisness model (100 Amazon giftcard)
+
