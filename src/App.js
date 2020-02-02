@@ -74,7 +74,7 @@ function App() {
         </Toolbar>
       </AppBar>
 
-      <MessageFeed messages={mess} />
+      <MessageFeed messages={[]} />
         
     </React.Fragment>
   );

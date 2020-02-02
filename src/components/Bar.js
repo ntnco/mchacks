@@ -19,22 +19,31 @@ class Bubble extends React.Component {
     constructor(probs){
         super(probs);
         this.state = {...probs}
-        console.log(this.state.onClick);
 
         this.handleClick = this.handleClick.bind(this);
         this.handleClick2 = this.handleClick2.bind(this);
+        this.handleEnter = this.handleEnter.bind(this);
 
 
     }
 
     handleClick(){
-        //console.log(this.state.value);
-        this.state.onClick(this.state.value)
-        this.state.value = "";
+        if(this.state.value !== ""){
+            this.state.onClick(this.state.value)
+            this.state.value = "";    
+        }
     }
 
     handleClick2(event){
         this.setState({...this.state, value:event.target.value})
+    }
+
+    handleEnter(event){
+        if(event.keyCode == 13){
+            this.handleClick();
+        }
+
+        
     }
     
     render() {
@@ -76,8 +85,11 @@ class Bubble extends React.Component {
                 style={{width:"100%", color:"white"}}
                 value={this.state.value}
                 onChange={this.handleClick2}
+                onKeyDown={this.handleEnter}
+
             />
-            <Button label="send" onClick={this.handleClick} style={{'background-color':"#ffd200"}}>Send</Button>
+            <Button label="send" onClick={this.handleClick}  style={{'background-color':"#ffd200"}}>Send</Button>
+            
       
         </Toolbar>
         </AppBar>
