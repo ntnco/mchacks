@@ -23,7 +23,14 @@ class Bubble extends React.Component {
     }
 
     default(text){
-        return <Typography style={this.style()}>{text}</Typography>;
+        return <Typography style={this.style()}>{text.split('\n').map(function(item, key) {
+            return (
+              <span key={key}>
+                {item}
+                <br/>
+              </span>
+            )
+          })}</Typography>;
     }
 
     style = ()=> {

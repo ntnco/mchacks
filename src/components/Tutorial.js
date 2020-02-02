@@ -23,6 +23,8 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
+import ReactMarkdown from 'react-markdown';
+
 
 
 import React, { Component } from 'react'
@@ -33,13 +35,28 @@ class Tutorial extends React.Component {
     constructor(probs){
         super(probs);
 
-        this.state = {...probs, index:0}
+        this.state = {...probs, index:0, left:false, right:true}
 
         console.log(this.state);
 
         this.getTutorial = this.getTutorial.bind(this);
         this.handleClickLeft = this.handleClickLeft.bind(this);
         this.handleClickRight = this.handleClickRight.bind(this);
+        this.updateButtons = this.updateButtons.bind(this);
+
+        this.updateButtons(0);
+    }
+
+    updateButtons(newIndex){
+
+      this.setState(
+        {
+          left : newIndex == (this.state.tutorial.length -1), 
+          right: newIndex == 0
+        });
+
+        console.log(this.state);
+
     }
 
     getTutorial(){
@@ -47,12 +64,16 @@ class Tutorial extends React.Component {
     }
 
     handleClickLeft(){
-        this.setState({...this.state, index:this.state.index+1});
+      const newIndex = (this.state.index+1);
+        this.setState({index:newIndex});
+        this.updateButtons(newIndex);
         
     }  
 
     handleClickRight(){
-        this.setState({...this.state, index:this.state.index-1});
+      const newIndex = (this.state.index-1);
+        this.setState({index:newIndex});
+        this.updateButtons(newIndex);
     }
     
     render() {
@@ -62,15 +83,25 @@ class Tutorial extends React.Component {
             title={this.getTutorial().title}
         />
 
-        <CardContent style={{minHeight:"300px"}}>
-            {this.getTutorial().content}
+        <CardContent style={{minHeight:"300px", maxHeight:"600px", overflow:"scroll"}}>
+          <Typography>
+          {this.getTutorial().content.split('\n').map(function(item, key) {
+            return (
+              <span key={key}>
+                {item}
+                <br/>
+              </span>
+            )
+          })}
+          </Typography>
+            
         </CardContent>
 
         <CardActions>
-        <Button size="small" color="primary" onClick={this.handleClickLeft}>
+        <Button key="pre" size="small" color="primary" onClick={this.handleClickRight} disabled={this.state.right}>
           Previous
         </Button>
-        <Button size="small" color="primary" onClick={this.handleClickRight}>
+        <Button key="next" size="small" color="primary" onClick={this.handleClickLeft} disabled={this.state.left}>
           Next
         </Button>
       </CardActions>

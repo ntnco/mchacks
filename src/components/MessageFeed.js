@@ -8,10 +8,22 @@ import Chip from "@material-ui/core/Chip"
 
 
 
+
 class MessageFeed extends React.Component {
+    uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+        });
+    }
+
+
     constructor(probs){
         super(probs);
         this.state = {messages : probs.messages, waiting:false, buttons:[]}
+
+        this.guid = this.uuidv4();
+
 
         this.handleClick = this.handleClick.bind(this);
         this.componentDidUpdate = this.componentDidUpdate.bind(this);
@@ -28,7 +40,8 @@ class MessageFeed extends React.Component {
                 let response = e.text;
                 console.log(response);
                 if(response == null || response == "utter_default") 
-                    response = 'Please could you rephrase ? I can\'t find an answer to this specific question.';
+                    //Please could you rephrase ? I can\'t find an answer to this specific question.
+                    response = '$tutorial [{"title":"Step 1", "content":"#hi there \\n how"}, {"title":"Step 2", "content":"heyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy"},  {"title":"Step 3", "content":"do shit\\nand\\ndie"}]';
 
                 this.addMsg({text:response, bot:true});
 
@@ -68,7 +81,7 @@ class MessageFeed extends React.Component {
         
         // send the request
         this.xhr.open('POST', 'http://35.245.31.192/api')
-        this.xhr.send(JSON.stringify({ sender: "new",  message:msg}));
+        this.xhr.send(JSON.stringify({ sender: this.guid,  message:msg}));
     }
 
     handleButtonClick(title, payload){
