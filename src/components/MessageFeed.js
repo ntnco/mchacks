@@ -28,12 +28,14 @@ class MessageFeed extends React.Component {
                 let response = e.text;
                 console.log(response);
                 if(response == null || response == "utter_default") 
-                    response = '$tutorial [{"title":"step one", "content":"hi there"}, {"title":"step two", "content":"hi there"}]';
+                    response = 'Please could you rephrase ? I can\'t find an answer to this specific question.';
 
                 this.addMsg({text:response, bot:true});
 
                 if(e.buttons != null || e.buttons != undefined){
                     this.setState({...this.state, buttons:e.buttons});
+                } else {
+                    this.setState({buttons:[]})
                 }
             });
             
@@ -41,7 +43,7 @@ class MessageFeed extends React.Component {
         })
 
         this.xhr.addEventListener('error', ()=>{
-            this.addMsg({text:'$tutorial [{"title":"step one", "content":"hi there"}, {"title":"step two", "content":"hi there"}]', bot:true});
+            this.addMsg({text:'Sorry, I can\'t connect to our servers. Please check your internet connection.', bot:true});
         })
 
         
@@ -65,7 +67,7 @@ class MessageFeed extends React.Component {
         // open the request with the verb and the url
         
         // send the request
-        this.xhr.open('POST', 'http://35.245.31.192:5005/webhooks/rest/webhook')
+        this.xhr.open('POST', 'http://35.245.31.192/api')
         this.xhr.send(JSON.stringify({ sender: "sup",  message:msg}));
     }
 
