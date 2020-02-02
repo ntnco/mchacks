@@ -11,6 +11,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
+import logo2 from './logo.png';
+
 import MessageFeed from './components/MessageFeed'
 
 
@@ -66,11 +68,9 @@ function App() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="sticky">
+      <AppBar position="sticky" style={{backgroundColor:"#005DAA"}}>
         <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Conobot
-          </Typography>
+          <img src={logo2} style={{height:"100px",  marginTop:"10px", marginBottom:"10px"}} />
         </Toolbar>
       </AppBar>
 

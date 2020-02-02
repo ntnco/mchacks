@@ -74,7 +74,8 @@ class Bubble extends React.Component {
 
     return <AppBar style={{
         top: 'auto',
-        bottom: 0
+        bottom: 0, 
+        backgroundColor:"#005DAA"
       }}>
     <Toolbar >
             

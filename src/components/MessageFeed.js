@@ -41,7 +41,7 @@ class MessageFeed extends React.Component {
                 console.log(response);
                 if(response == null || response == "utter_default") 
                     //Please could you rephrase ? I can\'t find an answer to this specific question.
-                    response = '$tutorial [{"title":"Step 1", "content":"#hi there \\n how"}, {"title":"Step 2", "content":"heyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy \\nheyyyy"},  {"title":"Step 3", "content":"do shit\\nand\\ndie"}]';
+                    response = 'Please could you rephrase ? I can\'t find an answer to this specific question.';
 
                 this.addMsg({text:response, bot:true});
 

@@ -77,7 +77,7 @@ class Tutorial extends React.Component {
     }
     
     render() {
-        return <Container style={{position:"absolute", top:"50%", transform:"translate(0, -50%)"}}>
+        return <Container style={{ position:"absolute", top:"50%", transform:"translate(0, -50%)", maxWidth:"10000000px"}}>
         <Card>
             <CardHeader
             title={this.getTutorial().title}
