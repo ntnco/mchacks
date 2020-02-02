@@ -68,7 +68,7 @@ class MessageFeed extends React.Component {
         
         // send the request
         this.xhr.open('POST', 'http://35.245.31.192/api')
-        this.xhr.send(JSON.stringify({ sender: "sup",  message:msg}));
+        this.xhr.send(JSON.stringify({ sender: "new",  message:msg}));
     }
 
     handleButtonClick(title, payload){
